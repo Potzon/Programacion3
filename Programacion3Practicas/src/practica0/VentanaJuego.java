@@ -26,9 +26,8 @@ public class VentanaJuego extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//acelerar 5 pixeles/segundo
-				//printear velocidad
-				
+				 miCoche.acelera(5);
+			        System.out.println("Velocidad: " + miCoche.getMiVelocidad() + " píxeles/segundo");
 			}
 		});
 		
@@ -37,8 +36,8 @@ public class VentanaJuego extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//decelerar 5 pixeles/segundo
-				//printear velocidad
+				miCoche.acelera(-5);
+		        System.out.println("Velocidad: " + miCoche.getMiVelocidad() + " píxeles/segundo");
 			}
 		});
 		
@@ -47,7 +46,7 @@ public class VentanaJuego extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// girar 10 grados hacia la izquierda
+				miCoche.gira(-10);
 				
 			}
 		});
@@ -57,7 +56,7 @@ public class VentanaJuego extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// girar 10 grados hacia la derecha
+				miCoche.gira(10);
 				
 			}
 		});
@@ -83,8 +82,7 @@ public class VentanaJuego extends JFrame{
        
         
 		
-		this.setTitle("No Need For Speed");
-		this.setSize(600, 600);
+		this.setSize(600, 500);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(false);
 		
@@ -97,13 +95,15 @@ public class VentanaJuego extends JFrame{
 			
 			@Override
 			public void run() {
-				//metodos para mover el coche
-				//printear la posicion
-				System.out.println("eje X: " + miCoche.getPosX() + ", eje Y: " + miCoche.getPosY());
-				try {
-					Thread.sleep( 40 );
-				} catch (InterruptedException e) {}
-		} 
+				 while (true) {
+		                miCoche.mueve(0.04);
+		                System.out.println("Posición: X=" + miCoche.getPosX() + ", Y=" + miCoche.getPosY());
+		                try {
+		                    Thread.sleep(40);
+		                } catch (InterruptedException e) {
+		                }
+		             }
+				 }
 		});
 	    hilo.start();
     }
