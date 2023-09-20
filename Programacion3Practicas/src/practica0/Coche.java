@@ -63,7 +63,4 @@ public class Coche {
 		 setPosX(posX + miVelocidad * Math.cos(miDireccionActual / 180 * Math.PI)* tiempoDeMovimiento);
 		 setPosY(posY + miVelocidad * Math.sin(miDireccionActual / 180 * Math.PI)* tiempoDeMovimiento);
 	 }
-
-
-	
 }
